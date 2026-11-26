@@ -31,5 +31,10 @@ public class Pagamento {
     }
 
     public void setData(LocalDate data) {
+        if (data == null) {
+            throw new IllegalArgumentException("Data invalida");
+        }
+
+        this.data = data;
     }
 }
