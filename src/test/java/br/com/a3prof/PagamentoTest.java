@@ -95,4 +95,32 @@ public class PagamentoTest {
         assertThrows(IllegalArgumentException.class,
             () -> pagamento.setFormaPagamento("Invalida"));
     }
+
+    @Test
+    void deveRegistrarSituacaoPago() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Pago");
+        assertEquals("Pago", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarSituacaoPendente() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Pendente");
+        assertEquals("Pendente", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarSituacaoCancelado() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Cancelado");
+        assertEquals("Cancelado", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRejeitarSituacaoInvalida() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setSituacao("Invalida"));
+    }
 }

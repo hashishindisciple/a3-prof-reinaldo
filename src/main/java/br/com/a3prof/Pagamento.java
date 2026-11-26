@@ -7,6 +7,7 @@ public class Pagamento {
     private double valor;
     private LocalDate data;
     private String formaPagamento;
+    private String situacao;
 
     public boolean validarValor(double valor) {
         return valor > 0;
@@ -54,5 +55,12 @@ public class Pagamento {
             !"Dinheiro".equals(formaPagamento)) {
             throw new IllegalArgumentException("Forma de pagamento invalida");
         }
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
     }
 }
