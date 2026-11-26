@@ -13,5 +13,10 @@ public class Pagamento {
     }
 
     public void setValor(double valor) {
+        if (!validarValor(valor)) {
+            throw new IllegalArgumentException("Valor invalido");
+        }
+
+        this.valor = valor;
     }
 }
