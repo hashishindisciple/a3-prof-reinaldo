@@ -49,5 +49,20 @@ public class ReservaTeste {
 
         assertEquals(1, reserva.getId());
     }
+    @Test
+    void rejeitaEntradaNula() {
+        Reserva reserva = new Reserva();
 
+        assertThrows(IllegalArgumentException.class, () ->
+                reserva.setDatas(null, LocalDate.of(2026, 12, 15))
+        );
+    }
+    @Test
+    void rejeitaSaidaNula() {
+        Reserva reserva = new Reserva();
+
+        assertThrows(IllegalArgumentException.class, () ->
+                reserva.setDatas(LocalDate.of(2026, 12, 10), null)
+        );
+    }
 }
