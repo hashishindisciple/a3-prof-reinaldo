@@ -65,4 +65,14 @@ public class ReservaTeste {
                 reserva.setDatas(LocalDate.of(2026, 12, 10), null)
         );
     }
+    @Test
+    void calculaQuantidadeDeDiarias() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(
+                LocalDate.of(2026, 12, 10),
+                LocalDate.of(2026, 12, 15)
+        );
+
+        assertEquals(5, reserva.getQuantidadeDiarias());
+    }
 }
