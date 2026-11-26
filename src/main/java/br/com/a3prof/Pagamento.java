@@ -23,9 +23,8 @@ public class Pagamento {
     }
 
     private void validarRegistro(double valor) {
-        if (!validarValor(valor)) {
+        if (!validarValor(valor))
             throw new IllegalArgumentException("Valor invalido");
-        }
     }
 
     public LocalDate getData() {
@@ -33,10 +32,8 @@ public class Pagamento {
     }
 
     public void setData(LocalDate data) {
-        if (data == null) {
+        if (data == null)
             throw new IllegalArgumentException("Data invalida");
-        }
-
         this.data = data;
     }
 
@@ -49,12 +46,9 @@ public class Pagamento {
         this.formaPagamento = formaPagamento;
     }
 
-    private void validarFormaPagamento(String formaPagamento) {
-        if (!"PIX".equals(formaPagamento) &&
-            !"Cartao".equals(formaPagamento) &&
-            !"Dinheiro".equals(formaPagamento)) {
-            throw new IllegalArgumentException("Forma de pagamento invalida");
-        }
+    private void validarFormaPagamento(String forma) {
+        if (!"PIX".equals(forma) && !"Cartao".equals(forma) && !"Dinheiro".equals(forma))
+            throw new IllegalArgumentException("Forma invalida");
     }
 
     public String getSituacao() {
@@ -62,5 +56,8 @@ public class Pagamento {
     }
 
     public void setSituacao(String situacao) {
+        if (!"Pago".equals(situacao) && !"Pendente".equals(situacao) && !"Cancelado".equals(situacao))
+            throw new IllegalArgumentException("Situacao invalida");
+        this.situacao = situacao;
     }
 }
