@@ -9,9 +9,12 @@ public class Servico {
     }
 
     public void setDescricao(String descricao) {
+        validarDescricao(descricao);
+        this.descricao = descricao;
+    }
+
+    private void validarDescricao(String descricao) {
         if (descricao == null || descricao.isBlank())
             throw new IllegalArgumentException("Descricao invalida");
-
-        this.descricao = descricao;
     }
 }
