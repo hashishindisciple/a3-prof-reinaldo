@@ -25,4 +25,25 @@ public class ServicoTest {
         assertThrows(IllegalArgumentException.class,
             () -> s.setDescricao(null));
     }
+
+    @Test
+    void deveRegistrarPreco() {
+        Servico s = new Servico();
+        s.setPreco(50.0);
+        assertEquals(50.0, s.getPreco());
+    }
+
+    @Test
+    void deveRejeitarPrecoZero() {
+        Servico s = new Servico();
+        assertThrows(IllegalArgumentException.class,
+            () -> s.setPreco(0));
+    }
+
+    @Test
+    void deveRejeitarPrecoNegativo() {
+        Servico s = new Servico();
+        assertThrows(IllegalArgumentException.class,
+            () -> s.setPreco(-10));
+    }
 }
