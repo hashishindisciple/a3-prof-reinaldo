@@ -1,5 +1,6 @@
 package br.com.a3prof;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,5 +43,28 @@ public class PagamentoTest {
         Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
             () -> pagamento.setValor(-100.0));
+    }
+
+    @Test
+    void deveRegistrarDataAtual() {
+        Pagamento pagamento = new Pagamento();
+        LocalDate data = LocalDate.now();
+        pagamento.setData(data);
+        assertEquals(data, pagamento.getData());
+    }
+
+    @Test
+    void deveRegistrarDataAnterior() {
+        Pagamento pagamento = new Pagamento();
+        LocalDate data = LocalDate.now().minusDays(1);
+        pagamento.setData(data);
+        assertEquals(data, pagamento.getData());
+    }
+
+    @Test
+    void deveRejeitarDataNula() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setData(null));
     }
 }

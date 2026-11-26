@@ -1,8 +1,11 @@
 package br.com.a3prof;
 
+import java.time.LocalDate;
+
 public class Pagamento {
 
     private double valor;
+    private LocalDate data;
 
     public boolean validarValor(double valor) {
         return valor > 0;
@@ -21,5 +24,12 @@ public class Pagamento {
         if (!validarValor(valor)) {
             throw new IllegalArgumentException("Valor invalido");
         }
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
     }
 }
