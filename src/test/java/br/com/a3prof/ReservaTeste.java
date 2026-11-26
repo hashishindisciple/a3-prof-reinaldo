@@ -75,4 +75,15 @@ public class ReservaTeste {
 
         assertEquals(5, reserva.getQuantidadeDiarias());
     }
+    @Test
+    void calculaValorTotal() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(
+                LocalDate.of(2026, 12, 10),
+                LocalDate.of(2026, 12, 15)
+        );
+        reserva.setValorDiaria(100.0);
+
+        assertEquals(500.0, reserva.getValorTotal());
+    }
 }
