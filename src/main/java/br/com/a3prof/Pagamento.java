@@ -44,12 +44,15 @@ public class Pagamento {
     }
 
     public void setFormaPagamento(String formaPagamento) {
+        validarFormaPagamento(formaPagamento);
+        this.formaPagamento = formaPagamento;
+    }
+
+    private void validarFormaPagamento(String formaPagamento) {
         if (!"PIX".equals(formaPagamento) &&
             !"Cartao".equals(formaPagamento) &&
             !"Dinheiro".equals(formaPagamento)) {
             throw new IllegalArgumentException("Forma de pagamento invalida");
         }
-
-        this.formaPagamento = formaPagamento;
     }
 }
