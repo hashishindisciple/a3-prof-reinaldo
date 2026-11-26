@@ -67,4 +67,32 @@ public class PagamentoTest {
         assertThrows(IllegalArgumentException.class,
             () -> pagamento.setData(null));
     }
+
+    @Test
+    void deveRegistrarPix() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("PIX");
+        assertEquals("PIX", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRegistrarCartao() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("Cartao");
+        assertEquals("Cartao", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRegistrarDinheiro() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("Dinheiro");
+        assertEquals("Dinheiro", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRejeitarFormaInvalida() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setFormaPagamento("Invalida"));
+    }
 }

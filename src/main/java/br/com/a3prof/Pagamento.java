@@ -6,6 +6,7 @@ public class Pagamento {
 
     private double valor;
     private LocalDate data;
+    private String formaPagamento;
 
     public boolean validarValor(double valor) {
         return valor > 0;
@@ -36,5 +37,12 @@ public class Pagamento {
         }
 
         this.data = data;
+    }
+
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(String formaPagamento) {
     }
 }
