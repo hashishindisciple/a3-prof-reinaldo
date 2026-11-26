@@ -1,5 +1,6 @@
 package br.com.a3prof;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,5 +22,105 @@ public class PagamentoTest {
     void deveRejeitarValorNegativo() {
         Pagamento pagamento = new Pagamento();
         assertFalse(pagamento.validarValor(-50.0));
+    }
+
+    @Test
+    void deveRegistrarValorPositivo() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setValor(150.0);
+        assertEquals(150.0, pagamento.getValor());
+    }
+
+    @Test
+    void deveImpedirRegistroDeValorZero() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setValor(0.0));
+    }
+
+    @Test
+    void deveImpedirRegistroDeValorNegativo() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setValor(-100.0));
+    }
+
+    @Test
+    void deveRegistrarDataAtual() {
+        Pagamento pagamento = new Pagamento();
+        LocalDate data = LocalDate.now();
+        pagamento.setData(data);
+        assertEquals(data, pagamento.getData());
+    }
+
+    @Test
+    void deveRegistrarDataAnterior() {
+        Pagamento pagamento = new Pagamento();
+        LocalDate data = LocalDate.now().minusDays(1);
+        pagamento.setData(data);
+        assertEquals(data, pagamento.getData());
+    }
+
+    @Test
+    void deveRejeitarDataNula() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setData(null));
+    }
+
+    @Test
+    void deveRegistrarPix() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("PIX");
+        assertEquals("PIX", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRegistrarCartao() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("Cartao");
+        assertEquals("Cartao", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRegistrarDinheiro() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setFormaPagamento("Dinheiro");
+        assertEquals("Dinheiro", pagamento.getFormaPagamento());
+    }
+
+    @Test
+    void deveRejeitarFormaInvalida() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setFormaPagamento("Invalida"));
+    }
+
+    @Test
+    void deveRegistrarSituacaoPago() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Pago");
+        assertEquals("Pago", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarSituacaoPendente() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Pendente");
+        assertEquals("Pendente", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarSituacaoCancelado() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setSituacao("Cancelado");
+        assertEquals("Cancelado", pagamento.getSituacao());
+    }
+
+    @Test
+    void deveRejeitarSituacaoInvalida() {
+        Pagamento pagamento = new Pagamento();
+        assertThrows(IllegalArgumentException.class,
+            () -> pagamento.setSituacao("Invalida"));
     }
 }
