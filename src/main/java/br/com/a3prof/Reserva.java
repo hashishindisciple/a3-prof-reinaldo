@@ -1,6 +1,7 @@
 package br.com.a3prof;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva {
 
@@ -14,6 +15,10 @@ public class Reserva {
         }
         this.entrada = entrada;
         this.saida = saida;
+    }
+
+    public long getQuantidadeDiarias() {
+        return ChronoUnit.DAYS.between(entrada, saida);
     }
 
     public int getId() {
