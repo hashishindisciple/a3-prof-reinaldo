@@ -8,6 +8,10 @@ public class Reserva {
     private LocalDate entrada;
     private LocalDate saida;
 
+    public void setDatas(LocalDate entrada, LocalDate saida) {
+        this.entrada = entrada;
+        this.saida = saida;
+    }
 
     public int getId() {
         return id;
