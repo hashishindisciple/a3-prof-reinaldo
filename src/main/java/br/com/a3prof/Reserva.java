@@ -8,10 +8,18 @@ public class Reserva {
     private LocalDate entrada;
     private LocalDate saida;
 
+
     public int getId() {
         return id;
     }
     public Reserva() {
         this.id = 1;
+    }
+    public LocalDate getEntrada() {
+        return entrada;
+    }
+
+    public LocalDate getSaida() {
+        return saida;
     }
 }
