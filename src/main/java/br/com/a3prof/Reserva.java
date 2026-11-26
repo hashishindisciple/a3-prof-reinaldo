@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Reserva {
 
-    private int id;
+    private final int id;
     private LocalDate entrada;
     private LocalDate saida;
 

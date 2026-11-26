@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ReservaTeste {
 
@@ -37,4 +36,18 @@ public class ReservaTeste {
                 )
         );
     }
+    @Test
+    void reservaNovaNaoTemDatas() {
+        Reserva reserva = new Reserva();
+
+        assertNull(reserva.getEntrada());
+        assertNull(reserva.getSaida());
+    }
+    @Test
+    void idDaReservaNaoMuda() {
+        Reserva reserva = new Reserva();
+
+        assertEquals(1, reserva.getId());
+    }
+
 }
