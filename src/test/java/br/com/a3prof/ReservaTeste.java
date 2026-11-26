@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ReservaTeste {
 
@@ -24,5 +25,16 @@ public class ReservaTeste {
 
         assertEquals(entrada, reserva.getEntrada());
         assertEquals(saida, reserva.getSaida());
+    }
+    @Test
+    void rejeitaSaidaAntesDaEntrada() {
+        Reserva reserva = new Reserva();
+
+        assertThrows(IllegalArgumentException.class, () ->
+                reserva.setDatas(
+                        LocalDate.of(2026, 12, 15),
+                        LocalDate.of(2026, 12, 10)
+                )
+        );
     }
 }
