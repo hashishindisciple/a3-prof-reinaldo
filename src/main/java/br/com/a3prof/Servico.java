@@ -9,5 +9,9 @@ public class Servico {
     }
 
     public void setDescricao(String descricao) {
+        if (descricao == null || descricao.isBlank())
+            throw new IllegalArgumentException("Descricao invalida");
+
+        this.descricao = descricao;
     }
 }
