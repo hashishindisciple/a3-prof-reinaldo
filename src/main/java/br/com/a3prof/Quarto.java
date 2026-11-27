@@ -9,9 +9,12 @@ public class Quarto {
     }
 
     public void setNumero(int numero) {
+        validarNumero(numero);
+        this.numero = numero;
+    }
+
+    private void validarNumero(int numero) {
         if (numero <= 0)
             throw new IllegalArgumentException("Numero invalido");
-
-        this.numero = numero;
     }
 }
