@@ -27,6 +27,19 @@ public class QuartoTest {
     }
 
     @Test
+    void deveRetornarNumeroInicial() {
+        assertEquals(0, new Quarto().getNumero());
+    }
+
+    @Test
+    void deveRetornarNumeroAlterado() {
+        Quarto q = new Quarto();
+        q.setNumero(101);
+        q.setNumero(102);
+        assertEquals(102, q.getNumero());
+    }
+
+    @Test
     void deveRegistrarCategoria() {
         Quarto q = new Quarto();
         q.setCategoria("Simples");
@@ -48,6 +61,19 @@ public class QuartoTest {
     }
 
     @Test
+    void deveRetornarCategoriaInicial() {
+        assertNull(new Quarto().getCategoria());
+    }
+
+    @Test
+    void deveRetornarCategoriaAlterada() {
+        Quarto q = new Quarto();
+        q.setCategoria("Simples");
+        q.setCategoria("Luxo");
+        assertEquals("Luxo", q.getCategoria());
+    }
+
+    @Test
     void deveRegistrarPreco() {
         Quarto q = new Quarto();
         q.setPreco(150);
@@ -66,6 +92,19 @@ public class QuartoTest {
         Quarto q = new Quarto();
         assertThrows(IllegalArgumentException.class,
             () -> q.setPreco(-50));
+    }
+
+    @Test
+    void deveRetornarPrecoInicial() {
+        assertEquals(0, new Quarto().getPreco());
+    }
+
+    @Test
+    void deveRetornarPrecoAlterado() {
+        Quarto q = new Quarto();
+        q.setPreco(150);
+        q.setPreco(200);
+        assertEquals(200, q.getPreco());
     }
 
     @Test
