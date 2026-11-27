@@ -3,6 +3,7 @@ package br.com.a3prof;
 public class Funcionario {
     private final int id;
     private final String nome;
+    private double salario;
 
     public Funcionario(int id, String nome) {
         if (nome == null || nome.isBlank()) {
@@ -17,5 +18,12 @@ public class Funcionario {
     }
     public String getNome() {
         return nome;
+    }
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public double getSalario() {
+        return salario;
     }
 }
