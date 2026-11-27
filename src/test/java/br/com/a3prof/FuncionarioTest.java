@@ -29,4 +29,14 @@ public class FuncionarioTest {
 
         assertEquals(3000.0, funcionario.getSalario());
     }
+    @Test
+    void rejeitaSalarioNaoPositivo() {
+        Funcionario funcionario = new Funcionario(7, "Ana");
+
+        assertThrows(IllegalArgumentException.class,
+                () -> funcionario.setSalario(0));
+        assertThrows(IllegalArgumentException.class,
+                () -> funcionario.setSalario(-100));
+    }
+
 }
