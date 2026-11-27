@@ -8,6 +8,7 @@ public class Reserva {
     private final int id;
     private LocalDate entrada;
     private LocalDate saida;
+    private double valorDiaria;
 
     public void setDatas(LocalDate entrada, LocalDate saida) {
         if (entrada == null || saida == null || saida.isBefore(entrada)) {
@@ -21,6 +22,12 @@ public class Reserva {
         return ChronoUnit.DAYS.between(entrada, saida);
     }
 
+    public void setValorDiaria(double valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }
+    public double getValorTotal() {
+        return getQuantidadeDiarias() * valorDiaria;
+    }
     public int getId() {
         return id;
     }
