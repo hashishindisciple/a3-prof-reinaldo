@@ -1,8 +1,11 @@
 # a3-prof-reinaldo - **Sistema para hotelaria**
 
 Nicolas Lemos de Oliveira - 325123004
+
 Vinicius de Souza Oliveira - 325123253
+
 Thiago Reis Ferreira - 325127052
+
 João Gabriel de Souza - 32516329 
 
 
