@@ -86,4 +86,12 @@ public class ReservaTeste {
 
         assertEquals(500.0, reserva.getValorTotal());
     }
+    @Test
+    void rejeitaValorDeDiariaNaoPositivo() {
+        Reserva reserva = new Reserva();
+
+        assertThrows(IllegalArgumentException.class,
+                () -> reserva.setValorDiaria(0));
+    }
+
 }

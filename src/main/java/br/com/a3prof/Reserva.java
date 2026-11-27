@@ -23,6 +23,11 @@ public class Reserva {
     }
 
     public void setValorDiaria(double valorDiaria) {
+        if (valorDiaria <= 0) {
+            throw new IllegalArgumentException(
+                    "O valor da diária deve ser positivo."
+            );
+        }
         this.valorDiaria = valorDiaria;
     }
     public double getValorTotal() {
