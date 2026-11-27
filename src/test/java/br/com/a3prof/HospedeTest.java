@@ -25,4 +25,25 @@ public class HospedeTest {
         assertThrows(IllegalArgumentException.class,
             () -> h.setNome(null));
     }
+
+    @Test
+    void deveRegistrarCpf() {
+        Hospede h = new Hospede();
+        h.setCpf("12345678909");
+        assertEquals("12345678909", h.getCpf());
+    }
+
+    @Test
+    void deveRejeitarCpfInvalido() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setCpf("123"));
+    }
+
+    @Test
+    void deveRejeitarCpfNulo() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setCpf(null));
+    }
 }

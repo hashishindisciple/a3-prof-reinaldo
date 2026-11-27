@@ -3,6 +3,7 @@ package br.com.a3prof;
 public class Hospede {
 
     private String nome;
+    private String cpf;
 
     public String getNome() {
         return nome;
@@ -16,5 +17,12 @@ public class Hospede {
     private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new IllegalArgumentException("Nome invalido");
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
     }
 }
