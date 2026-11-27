@@ -22,4 +22,11 @@ public class FuncionarioTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Funcionario(7, ""));
     }
+    @Test
+    void guardaSalario() {
+        Funcionario funcionario = new Funcionario(7, "Ana");
+        funcionario.setSalario(3000.0);
+
+        assertEquals(3000.0, funcionario.getSalario());
+    }
 }
