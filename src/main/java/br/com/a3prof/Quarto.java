@@ -39,5 +39,9 @@ public class Quarto {
     }
 
     public void setPreco(double preco) {
+        if (preco <= 0)
+            throw new IllegalArgumentException("Preco invalido");
+
+        this.preco = preco;
     }
 }
