@@ -8,119 +8,129 @@ public class PagamentoTest {
 
     @Test
     void deveAceitarValorPositivo() {
-        Pagamento pagamento = new Pagamento();
-        assertTrue(pagamento.validarValor(100.0));
+        assertTrue(new Pagamento().validarValor(100));
     }
 
     @Test
     void deveRejeitarValorZero() {
-        Pagamento pagamento = new Pagamento();
-        assertFalse(pagamento.validarValor(0.0));
+        assertFalse(new Pagamento().validarValor(0));
     }
 
     @Test
     void deveRejeitarValorNegativo() {
-        Pagamento pagamento = new Pagamento();
-        assertFalse(pagamento.validarValor(-50.0));
+        assertFalse(new Pagamento().validarValor(-50));
     }
 
     @Test
     void deveRegistrarValorPositivo() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setValor(150.0);
-        assertEquals(150.0, pagamento.getValor());
+        Pagamento p = new Pagamento();
+        p.setValor(150);
+        assertEquals(150, p.getValor());
     }
 
     @Test
     void deveImpedirRegistroDeValorZero() {
-        Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
-            () -> pagamento.setValor(0.0));
+            () -> new Pagamento().setValor(0));
     }
 
     @Test
     void deveImpedirRegistroDeValorNegativo() {
-        Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
-            () -> pagamento.setValor(-100.0));
+            () -> new Pagamento().setValor(-100));
+    }
+
+    @Test
+    void deveRetornarValorInicial() {
+        assertEquals(0, new Pagamento().getValor());
+    }
+
+    @Test
+    void deveRetornarValorAlterado() {
+        Pagamento p = new Pagamento();
+        p.setValor(100);
+        p.setValor(200);
+        assertEquals(200, p.getValor());
     }
 
     @Test
     void deveRegistrarDataAtual() {
-        Pagamento pagamento = new Pagamento();
+        Pagamento p = new Pagamento();
         LocalDate data = LocalDate.now();
-        pagamento.setData(data);
-        assertEquals(data, pagamento.getData());
+        p.setData(data);
+        assertEquals(data, p.getData());
     }
 
     @Test
     void deveRegistrarDataAnterior() {
-        Pagamento pagamento = new Pagamento();
+        Pagamento p = new Pagamento();
         LocalDate data = LocalDate.now().minusDays(1);
-        pagamento.setData(data);
-        assertEquals(data, pagamento.getData());
+        p.setData(data);
+        assertEquals(data, p.getData());
     }
 
     @Test
     void deveRejeitarDataNula() {
-        Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
-            () -> pagamento.setData(null));
+            () -> new Pagamento().setData(null));
+    }
+
+    @Test
+    void deveRetornarDataInicial() {
+        assertNull(new Pagamento().getData());
     }
 
     @Test
     void deveRegistrarPix() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setFormaPagamento("PIX");
-        assertEquals("PIX", pagamento.getFormaPagamento());
+        Pagamento p = new Pagamento();
+        p.setFormaPagamento("PIX");
+        assertEquals("PIX", p.getFormaPagamento());
     }
 
     @Test
     void deveRegistrarCartao() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setFormaPagamento("Cartao");
-        assertEquals("Cartao", pagamento.getFormaPagamento());
+        Pagamento p = new Pagamento();
+        p.setFormaPagamento("Cartao");
+        assertEquals("Cartao", p.getFormaPagamento());
     }
 
     @Test
     void deveRegistrarDinheiro() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setFormaPagamento("Dinheiro");
-        assertEquals("Dinheiro", pagamento.getFormaPagamento());
+        Pagamento p = new Pagamento();
+        p.setFormaPagamento("Dinheiro");
+        assertEquals("Dinheiro", p.getFormaPagamento());
     }
 
     @Test
     void deveRejeitarFormaInvalida() {
-        Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
-            () -> pagamento.setFormaPagamento("Invalida"));
+            () -> new Pagamento().setFormaPagamento("Invalido"));
     }
 
     @Test
     void deveRegistrarSituacaoPago() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setSituacao("Pago");
-        assertEquals("Pago", pagamento.getSituacao());
+        Pagamento p = new Pagamento();
+        p.setSituacao("Pago");
+        assertEquals("Pago", p.getSituacao());
     }
 
     @Test
     void deveRegistrarSituacaoPendente() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setSituacao("Pendente");
-        assertEquals("Pendente", pagamento.getSituacao());
+        Pagamento p = new Pagamento();
+        p.setSituacao("Pendente");
+        assertEquals("Pendente", p.getSituacao());
     }
 
     @Test
     void deveRegistrarSituacaoCancelado() {
-        Pagamento pagamento = new Pagamento();
-        pagamento.setSituacao("Cancelado");
-        assertEquals("Cancelado", pagamento.getSituacao());
+        Pagamento p = new Pagamento();
+        p.setSituacao("Cancelado");
+        assertEquals("Cancelado", p.getSituacao());
     }
 
     @Test
     void deveRejeitarSituacaoInvalida() {
-        Pagamento pagamento = new Pagamento();
         assertThrows(IllegalArgumentException.class,
-            () -> pagamento.setSituacao("Invalida"));
+            () -> new Pagamento().setSituacao("Invalido"));
     }
 }
