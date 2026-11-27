@@ -179,4 +179,26 @@ public class ReservaTest {
         assertEquals(150, reserva.getValorTotal());
     }
 
+    @Test
+    void reservaInicialmenteSemHospedeEQuarto() {
+        Reserva reserva = new Reserva();
+        assertNull(reserva.getHospede());
+        assertNull(reserva.getQuarto());
+    }
+
+    @Test
+    void calculaDiariasDeUmaEstadiaLonga() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(LocalDate.of(2026, 12, 1), LocalDate.of(2026, 12, 31));
+        assertEquals(30, reserva.getQuantidadeDiarias());
+    }
+
+    @Test
+    void calculaTotalDeEstadiaDeUmMes() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(LocalDate.of(2026, 12, 1), LocalDate.of(2026, 12, 31));
+        reserva.setValorDiaria(100);
+        assertEquals(3000, reserva.getValorTotal());
+    }
+
 }
