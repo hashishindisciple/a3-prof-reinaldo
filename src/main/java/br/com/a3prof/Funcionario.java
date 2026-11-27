@@ -20,6 +20,9 @@ public class Funcionario {
         return nome;
     }
     public void setSalario(double salario) {
+        if (salario <= 0) {
+            throw new IllegalArgumentException("Salario deve ser positivo.");
+        }
         this.salario = salario;
     }
 
