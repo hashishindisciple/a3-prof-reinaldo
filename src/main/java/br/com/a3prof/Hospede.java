@@ -54,9 +54,12 @@ public class Hospede {
     }
 
     public void setEmail(String email) {
+        validarEmail(email);
+        this.email = email;
+    }
+
+    private void validarEmail(String email) {
         if (email == null || !email.matches("[^\\s@]+@[^\\s@]+\\.[^\\s@]+"))
             throw new IllegalArgumentException("Email invalido");
-
-        this.email = email;
     }
 }
