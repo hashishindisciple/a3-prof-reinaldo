@@ -24,9 +24,12 @@ public class Quarto {
     }
 
     public void setCategoria(String categoria) {
+        validarCategoria(categoria);
+        this.categoria = categoria;
+    }
+
+    private void validarCategoria(String categoria) {
         if (categoria == null || categoria.isBlank())
             throw new IllegalArgumentException("Categoria invalida");
-
-        this.categoria = categoria;
     }
 }
