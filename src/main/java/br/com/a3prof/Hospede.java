@@ -9,9 +9,12 @@ public class Hospede {
     }
 
     public void setNome(String nome) {
+        validarNome(nome);
+        this.nome = nome;
+    }
+
+    private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new IllegalArgumentException("Nome invalido");
-
-        this.nome = nome;
     }
 }
