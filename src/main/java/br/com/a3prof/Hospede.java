@@ -39,5 +39,9 @@ public class Hospede {
     }
 
     public void setTelefone(String telefone) {
+        if (telefone == null || !telefone.matches("[0-9]{10,11}"))
+            throw new IllegalArgumentException("Telefone invalido");
+
+        this.telefone = telefone;
     }
 }
