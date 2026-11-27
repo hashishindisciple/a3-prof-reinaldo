@@ -67,4 +67,32 @@ public class QuartoTest {
         assertThrows(IllegalArgumentException.class,
             () -> q.setPreco(-50));
     }
+
+    @Test
+    void deveRegistrarDisponivel() {
+        Quarto q = new Quarto();
+        q.setSituacao("Disponivel");
+        assertEquals("Disponivel", q.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarOcupado() {
+        Quarto q = new Quarto();
+        q.setSituacao("Ocupado");
+        assertEquals("Ocupado", q.getSituacao());
+    }
+
+    @Test
+    void deveRegistrarManutencao() {
+        Quarto q = new Quarto();
+        q.setSituacao("Manutencao");
+        assertEquals("Manutencao", q.getSituacao());
+    }
+
+    @Test
+    void deveRejeitarSituacaoInvalida() {
+        Quarto q = new Quarto();
+        assertThrows(IllegalArgumentException.class,
+            () -> q.setSituacao("Invalida"));
+    }
 }

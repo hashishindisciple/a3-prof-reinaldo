@@ -5,6 +5,7 @@ public class Quarto {
     private int numero;
     private String categoria;
     private double preco;
+    private String situacao;
 
     public int getNumero() {
         return numero;
@@ -46,5 +47,12 @@ public class Quarto {
     private void validarPreco(double preco) {
         if (preco <= 0)
             throw new IllegalArgumentException("Preco invalido");
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
     }
 }
