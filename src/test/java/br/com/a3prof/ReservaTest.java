@@ -94,4 +94,43 @@ public class ReservaTest {
                 () -> reserva.setValorDiaria(0));
     }
 
+    @Test
+    void criaReservaComIdDiferente() {
+        assertEquals(25, new Reserva(25).getId());
+    }
+
+    @Test
+    void rejeitaIdDeReservaInvalido() {
+        assertThrows(IllegalArgumentException.class, () -> new Reserva(0));
+    }
+
+    @Test
+    void associaHospedeEQuarto() {
+        Hospede hospede = new Hospede();
+        Quarto quarto = new Quarto();
+        Reserva reserva = new Reserva(2);
+
+        reserva.setHospede(hospede);
+        reserva.setQuarto(quarto);
+
+        assertSame(hospede, reserva.getHospede());
+        assertSame(quarto, reserva.getQuarto());
+    }
+
+    @Test
+    void rejeitaAssociacoesNulas() {
+        Reserva reserva = new Reserva(2);
+
+        assertThrows(IllegalArgumentException.class, () -> reserva.setHospede(null));
+        assertThrows(IllegalArgumentException.class, () -> reserva.setQuarto(null));
+    }
+
+    @Test
+    void rejeitaDatasIguais() {
+        Reserva reserva = new Reserva();
+        LocalDate data = LocalDate.of(2026, 12, 10);
+
+        assertThrows(IllegalArgumentException.class, () -> reserva.setDatas(data, data));
+    }
+
 }
