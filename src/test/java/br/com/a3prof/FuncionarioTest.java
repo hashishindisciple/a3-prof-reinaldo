@@ -3,6 +3,7 @@ package br.com.a3prof;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FuncionarioTest {
     @Test
@@ -15,5 +16,10 @@ public class FuncionarioTest {
     void guardaNome() {
         Funcionario funcionario = new Funcionario(7, "Ana");
         assertEquals("Ana", funcionario.getNome());
+    }
+    @Test
+    void rejeitaNomeVazio() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Funcionario(7, ""));
     }
 }
