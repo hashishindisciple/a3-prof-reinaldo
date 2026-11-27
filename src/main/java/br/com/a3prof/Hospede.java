@@ -5,6 +5,7 @@ public class Hospede {
     private String nome;
     private String cpf;
     private String telefone;
+    private String email;
 
     public String getNome() {
         return nome;
@@ -46,5 +47,12 @@ public class Hospede {
     private void validarTelefone(String telefone) {
         if (telefone == null || !telefone.matches("[0-9]{10,11}"))
             throw new IllegalArgumentException("Telefone invalido");
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
     }
 }

@@ -67,4 +67,25 @@ public class HospedeTest {
         assertThrows(IllegalArgumentException.class,
             () -> h.setTelefone(null));
     }
+
+    @Test
+    void deveRegistrarEmail() {
+        Hospede h = new Hospede();
+        h.setEmail("joao@exemplo.com");
+        assertEquals("joao@exemplo.com", h.getEmail());
+    }
+
+    @Test
+    void deveRejeitarEmailInvalido() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setEmail("joao123"));
+    }
+
+    @Test
+    void deveRejeitarEmailNulo() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setEmail(null));
+    }
 }
