@@ -24,5 +24,9 @@ public class Quarto {
     }
 
     public void setCategoria(String categoria) {
+        if (categoria == null || categoria.isBlank())
+            throw new IllegalArgumentException("Categoria invalida");
+
+        this.categoria = categoria;
     }
 }
