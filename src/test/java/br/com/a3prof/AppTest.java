@@ -29,8 +29,11 @@ class AppTest {
     void criaReservaComHospedeEQuarto() {
         String entradas = "1\nAna\n12345678909\n31999999999\na@exemplo.com\n"
                 + "5\n101\nSimples\n150\n9\n1\n12345678909\n101\n"
-                + "2026-12-01\n2026-12-03\n10\n0\n";
-        assertTrue(executar(entradas).contains("Ana | quarto 101"));
+                + "2026-12-01\n2026-12-03\n7\n101\nSimples\n200\nDisponivel\n"
+                + "11\n1\n2026-12-01\n2026-12-03\n10\n0\n";
+        String saida = executar(entradas);
+        assertTrue(saida.contains("Ana | quarto 101"));
+        assertTrue(saida.contains("total 300"));
     }
 
     private String executar(String entradas) {

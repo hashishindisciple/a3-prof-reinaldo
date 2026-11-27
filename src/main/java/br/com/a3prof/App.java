@@ -97,18 +97,14 @@ public class App {
 
     private static void alterarReserva(RepositorioMemoria<Integer, Reserva> reservas, Scanner in) {
         int id = inteiro(in, "Id da reserva: ");
-        Reserva atual = reservas.buscar(id);
-        if (atual == null) {
+        Reserva reserva = reservas.buscar(id);
+        if (reserva == null) {
             System.out.println("Reserva nao encontrada.");
             return;
         }
-        Reserva r = new Reserva(id);
-        r.setHospede(atual.getHospede());
-        r.setQuarto(atual.getQuarto());
-        r.setValorDiaria(atual.getQuarto().getPreco());
-        r.setDatas(LocalDate.parse(ler(in, "Nova entrada (AAAA-MM-DD): ")),
+        reserva.setDatas(LocalDate.parse(ler(in, "Nova entrada (AAAA-MM-DD): ")),
                 LocalDate.parse(ler(in, "Nova saida (AAAA-MM-DD): ")));
-        resultado(reservas.atualizar(id, r));
+        System.out.println("Reserva alterada.");
     }
 
     private static void mostrarHospede(Hospede h) {
