@@ -46,4 +46,25 @@ public class QuartoTest {
         assertThrows(IllegalArgumentException.class,
             () -> q.setCategoria(null));
     }
+
+    @Test
+    void deveRegistrarPreco() {
+        Quarto q = new Quarto();
+        q.setPreco(150);
+        assertEquals(150, q.getPreco());
+    }
+
+    @Test
+    void deveRejeitarPrecoZero() {
+        Quarto q = new Quarto();
+        assertThrows(IllegalArgumentException.class,
+            () -> q.setPreco(0));
+    }
+
+    @Test
+    void deveRejeitarPrecoNegativo() {
+        Quarto q = new Quarto();
+        assertThrows(IllegalArgumentException.class,
+            () -> q.setPreco(-50));
+    }
 }
