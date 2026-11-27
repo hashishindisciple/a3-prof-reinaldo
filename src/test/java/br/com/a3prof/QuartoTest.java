@@ -25,4 +25,25 @@ public class QuartoTest {
         assertThrows(IllegalArgumentException.class,
             () -> q.setNumero(-1));
     }
+
+    @Test
+    void deveRegistrarCategoria() {
+        Quarto q = new Quarto();
+        q.setCategoria("Simples");
+        assertEquals("Simples", q.getCategoria());
+    }
+
+    @Test
+    void deveRejeitarCategoriaVazia() {
+        Quarto q = new Quarto();
+        assertThrows(IllegalArgumentException.class,
+            () -> q.setCategoria(""));
+    }
+
+    @Test
+    void deveRejeitarCategoriaNula() {
+        Quarto q = new Quarto();
+        assertThrows(IllegalArgumentException.class,
+            () -> q.setCategoria(null));
+    }
 }
