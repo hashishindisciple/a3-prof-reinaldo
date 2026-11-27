@@ -24,5 +24,9 @@ public class Hospede {
     }
 
     public void setCpf(String cpf) {
+        if (cpf == null || !cpf.matches("[0-9]{11}"))
+            throw new IllegalArgumentException("CPF invalido");
+
+        this.cpf = cpf;
     }
 }
