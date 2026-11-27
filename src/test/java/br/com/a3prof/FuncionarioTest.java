@@ -38,5 +38,12 @@ public class FuncionarioTest {
         assertThrows(IllegalArgumentException.class,
                 () -> funcionario.setSalario(-100));
     }
+    @Test
+    void aplicaReajusteSalarial() {
+        Funcionario funcionario = new Funcionario(7, "Ana");
+        funcionario.setSalario(3000);
+        funcionario.aplicarReajuste(10);
 
+        assertEquals(3300, funcionario.getSalario());
+    }
 }
