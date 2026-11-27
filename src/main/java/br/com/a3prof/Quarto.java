@@ -54,11 +54,14 @@ public class Quarto {
     }
 
     public void setSituacao(String situacao) {
+        validarSituacao(situacao);
+        this.situacao = situacao;
+    }
+
+    private void validarSituacao(String situacao) {
         if (!"Disponivel".equals(situacao) &&
             !"Ocupado".equals(situacao) &&
             !"Manutencao".equals(situacao))
             throw new IllegalArgumentException("Situacao invalida");
-
-        this.situacao = situacao;
     }
 }
