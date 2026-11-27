@@ -5,8 +5,11 @@ public class Funcionario {
     private final String nome;
 
     public Funcionario(int id, String nome) {
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome obrigatório.");
+        }
         this.id = id;
-        this.nome = nome;
+        this.nome = nome.trim();
     }
 
     public int getId() {
