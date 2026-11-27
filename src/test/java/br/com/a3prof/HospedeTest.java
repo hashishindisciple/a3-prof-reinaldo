@@ -46,4 +46,25 @@ public class HospedeTest {
         assertThrows(IllegalArgumentException.class,
             () -> h.setCpf(null));
     }
+
+    @Test
+    void deveRegistrarTelefone() {
+        Hospede h = new Hospede();
+        h.setTelefone("31999999999");
+        assertEquals("31999999999", h.getTelefone());
+    }
+
+    @Test
+    void deveRejeitarTelefoneInvalido() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setTelefone("123"));
+    }
+
+    @Test
+    void deveRejeitarTelefoneNulo() {
+        Hospede h = new Hospede();
+        assertThrows(IllegalArgumentException.class,
+            () -> h.setTelefone(null));
+    }
 }

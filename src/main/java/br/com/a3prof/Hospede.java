@@ -4,6 +4,7 @@ public class Hospede {
 
     private String nome;
     private String cpf;
+    private String telefone;
 
     public String getNome() {
         return nome;
@@ -31,5 +32,12 @@ public class Hospede {
     private void validarCpf(String cpf) {
         if (cpf == null || !cpf.matches("[0-9]{11}"))
             throw new IllegalArgumentException("CPF invalido");
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
     }
 }
