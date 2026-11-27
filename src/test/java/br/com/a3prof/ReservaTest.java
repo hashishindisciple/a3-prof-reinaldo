@@ -133,4 +133,50 @@ public class ReservaTest {
         assertThrows(IllegalArgumentException.class, () -> reserva.setDatas(data, data));
     }
 
+    @Test
+    void substituiHospedeAssociado() {
+        Reserva reserva = new Reserva(3);
+        Hospede primeiro = new Hospede();
+        Hospede segundo = new Hospede();
+        reserva.setHospede(primeiro);
+        reserva.setHospede(segundo);
+        assertSame(segundo, reserva.getHospede());
+    }
+
+    @Test
+    void substituiQuartoAssociado() {
+        Reserva reserva = new Reserva(3);
+        Quarto primeiro = new Quarto();
+        Quarto segundo = new Quarto();
+        reserva.setQuarto(primeiro);
+        reserva.setQuarto(segundo);
+        assertSame(segundo, reserva.getQuarto());
+    }
+
+    @Test
+    void atualizaPeriodoDaReserva() {
+        Reserva reserva = new Reserva();
+        LocalDate novaEntrada = LocalDate.of(2026, 12, 20);
+        LocalDate novaSaida = LocalDate.of(2026, 12, 22);
+        reserva.setDatas(LocalDate.of(2026, 12, 10), LocalDate.of(2026, 12, 12));
+        reserva.setDatas(novaEntrada, novaSaida);
+        assertEquals(novaEntrada, reserva.getEntrada());
+        assertEquals(novaSaida, reserva.getSaida());
+    }
+
+    @Test
+    void calculaDiariaDeUmaNoite() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(LocalDate.of(2026, 12, 10), LocalDate.of(2026, 12, 11));
+        assertEquals(1, reserva.getQuantidadeDiarias());
+    }
+
+    @Test
+    void calculaTotalParaUmaNoite() {
+        Reserva reserva = new Reserva();
+        reserva.setDatas(LocalDate.of(2026, 12, 10), LocalDate.of(2026, 12, 11));
+        reserva.setValorDiaria(150);
+        assertEquals(150, reserva.getValorTotal());
+    }
+
 }

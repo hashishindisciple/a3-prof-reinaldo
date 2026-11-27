@@ -77,4 +77,48 @@ class CheckInCheckOutTest {
         controle.realizarCheckIn(entrada);
         assertThrows(IllegalArgumentException.class, () -> controle.realizarCheckOut(saidaInvalida));
     }
+
+    @Test
+    void naoEstaHospedadoAntesDoCheckIn() {
+        assertFalse(new CheckInCheckOut().isHospedado());
+    }
+
+    @Test
+    void estaHospedadoAposCheckIn() {
+        CheckInCheckOut controle = new CheckInCheckOut();
+        controle.realizarCheckIn(LocalDateTime.of(2026, 11, 27, 14, 0));
+        assertTrue(controle.isHospedado());
+    }
+
+    @Test
+    void deixaDeEstarHospedadoAposCheckOut() {
+        CheckInCheckOut controle = new CheckInCheckOut();
+        LocalDateTime entrada = LocalDateTime.of(2026, 11, 27, 14, 0);
+        controle.realizarCheckIn(entrada);
+        controle.realizarCheckOut(entrada.plusDays(1));
+        assertFalse(controle.isHospedado());
+    }
+
+    @Test
+    void datasFicamNulasAntesDasOperacoes() {
+        CheckInCheckOut controle = new CheckInCheckOut();
+        assertNull(controle.getDataHoraCheckIn());
+        assertNull(controle.getDataHoraCheckOut());
+    }
+
+    @Test
+    void checkInPermaneceAposCheckOut() {
+        CheckInCheckOut controle = new CheckInCheckOut();
+        LocalDateTime entrada = LocalDateTime.of(2026, 11, 27, 14, 0);
+        controle.realizarCheckIn(entrada);
+        controle.realizarCheckOut(entrada.plusDays(1));
+        assertEquals(entrada, controle.getDataHoraCheckIn());
+    }
+
+    @Test
+    void checkOutContinuaNuloAposCheckIn() {
+        CheckInCheckOut controle = new CheckInCheckOut();
+        controle.realizarCheckIn(LocalDateTime.of(2026, 11, 27, 14, 0));
+        assertNull(controle.getDataHoraCheckOut());
+    }
 }
