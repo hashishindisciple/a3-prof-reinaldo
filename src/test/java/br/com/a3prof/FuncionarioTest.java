@@ -46,4 +46,20 @@ public class FuncionarioTest {
 
         assertEquals(3300, funcionario.getSalario());
     }
+
+    @Test
+    void aplicaReajusteDeVinteECincoPorCento() {
+        Funcionario funcionario = new Funcionario(8, "Bia");
+        funcionario.setSalario(1000);
+        funcionario.aplicarReajuste(25);
+        assertEquals(1250, funcionario.getSalario());
+    }
+
+    @Test
+    void reajusteDeZeroMantemSalario() {
+        Funcionario funcionario = new Funcionario(9, "Caio");
+        funcionario.setSalario(2000);
+        funcionario.aplicarReajuste(0);
+        assertEquals(2000, funcionario.getSalario());
+    }
 }

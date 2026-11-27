@@ -6,13 +6,36 @@ import java.time.temporal.ChronoUnit;
 public class Reserva {
 
     private final int id;
+    private Hospede hospede;
+    private Quarto quarto;
     private LocalDate entrada;
     private LocalDate saida;
     private double valorDiaria;
 
+    public Reserva() {
+        this(1);
+    }
+
+    public Reserva(int id) {
+        if (id <= 0) throw new IllegalArgumentException("Id invalido");
+        this.id = id;
+    }
+
+    public Hospede getHospede() { return hospede; }
+    public void setHospede(Hospede hospede) {
+        if (hospede == null) throw new IllegalArgumentException("Hospede obrigatorio");
+        this.hospede = hospede;
+    }
+
+    public Quarto getQuarto() { return quarto; }
+    public void setQuarto(Quarto quarto) {
+        if (quarto == null) throw new IllegalArgumentException("Quarto obrigatorio");
+        this.quarto = quarto;
+    }
+
     public void setDatas(LocalDate entrada, LocalDate saida) {
-        if (entrada == null || saida == null || saida.isBefore(entrada)) {
-            throw new IllegalArgumentException("Data de saída não pode ser anterior à data de entrada.");
+        if (entrada == null || saida == null || !saida.isAfter(entrada)) {
+            throw new IllegalArgumentException("Saida deve ser posterior a entrada.");
         }
         this.entrada = entrada;
         this.saida = saida;
@@ -35,9 +58,6 @@ public class Reserva {
     }
     public int getId() {
         return id;
-    }
-    public Reserva() {
-        this.id = 1;
     }
     public LocalDate getEntrada() {
         return entrada;
