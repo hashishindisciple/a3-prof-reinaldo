@@ -25,8 +25,11 @@ public class Funcionario {
         }
         this.salario = salario;
     }
-
     public double getSalario() {
         return salario;
+    }
+
+    public void aplicarReajuste(double percentual) {
+        salario += salario * percentual / 100;
     }
 }
