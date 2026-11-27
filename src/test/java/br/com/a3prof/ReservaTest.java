@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReservaTeste {
+public class ReservaTest {
 
     @Test
     void testReserva() {
