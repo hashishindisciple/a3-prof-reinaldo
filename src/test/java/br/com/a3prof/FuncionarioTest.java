@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FuncionarioTest {
     @Test
     void criaFuncionarioComId() {
-        Funcionario funcionario = new Funcionario(7);
+        Funcionario funcionario = new Funcionario(7, "Ana");
         assertEquals(7, funcionario.getId());
     }
 
